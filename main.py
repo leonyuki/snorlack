@@ -4,13 +4,14 @@ from fastapi import FastAPI, Request, HTTPException
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage
-from janome.tokenizer import Tokenizer  # 👈 新しく追加！
+from janome.tokenizer import Tokenizer
+import os
 
 # ==========================================
 # 1. 各種設定
 # ==========================================
-line_bot_api = LineBotApi("HMk1z+vPBkrkIIzpebxux9Zhgu3ZL4sKx7dWhBAzdCv7Aha8X72VnCA2BpEDzVWxszS0O6+NfloUyErNQlsfVwEryx8cYn4Fd8mXZoU5GzmzdY0Rd9Fa0hj9Qyxgtj0cBmaLJRCtMaM3j0BENUnw/QdB04t89/1O/w1cDnyilFU=")
-handler = WebhookHandler("207e322f2f2be98cc2af53182cc581b7")
+line_bot_api = LineBotApi(os.getenv("LINE_CHANNEL_ACCESS_TOKEN"))
+handler = WebhookHandler(os.getenv("LINE_CHANNEL_SECRET"))
 
 app = FastAPI()
 
