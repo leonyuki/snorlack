@@ -2,5 +2,4 @@ fastapi
 uvicorn
 line-bot-sdk
 scikit-learn
-pandas
 janome
